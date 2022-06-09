@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.calculadoradatabinding.data.CalculatorViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkGray"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resultados"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <TextView
+                android:id="@+id/value"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginVertical="200px"
+                android:text="@{viewmodel.value}"
+                android:textColor="@color/white"
+                android:textSize="150px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buAC"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/red"
+                    android:text="@string/c"
+                    android:onClick="@{() -> viewmodel.limpaCalculadora()}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+                    tools:ignore="NestedWeights" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buLeftParenthesis"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:text="@string/parentesesEsquerdo"
+                    android:onClick="@{() -> viewmodel.computaExpressao('(')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buRightParenthesis"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/parentesesDireito"
+                    android:onClick="@{() -> viewmodel.computaExpressao(')')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buExp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/exp"
+                    android:onClick="@{() -> viewmodel.computaExpressao('^')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buDivide"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/divide"
+                    android:onClick="@{() -> viewmodel.computaExpressao('/')}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buSeven"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/_7"
+                    android:onClick="@{() -> viewmodel.computaExpressao('7')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buEight"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:text="@string/_8"
+                    android:onClick="@{() -> viewmodel.computaExpressao('8')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buNine"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/_9"
+                    android:onClick="@{() -> viewmodel.computaExpressao('9')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buMultiply"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/multiplica"
+                    android:onClick="@{() -> viewmodel.computaExpressao('*')}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buFour"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/_4"
+                    android:onClick="@{() -> viewmodel.computaExpressao('4')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buFive"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:text="@string/_5"
+                    android:onClick="@{() -> viewmodel.computaExpressao('5')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buSix"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/_6"
+                    android:onClick="@{() -> viewmodel.computaExpressao('6')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buSub"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/sub"
+                    android:onClick="@{() -> viewmodel.computaExpressao('-')}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buOne"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/_1"
+                    android:onClick="@{() -> viewmodel.computaExpressao('1')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:text="@string/_2"
+                    android:onClick="@{() -> viewmodel.computaExpressao('2')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buThree"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/_3"
+                    android:onClick="@{() -> viewmodel.computaExpressao('3')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buPlus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/soma"
+                    android:onClick="@{() -> viewmodel.computaExpressao('+')}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/calcButtonTextSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buDot"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/dot"
+                    android:onClick="@{() -> viewmodel.computaExpressao('.')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buZero"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:text="@string/_0"
+                    android:onClick="@{() -> viewmodel.computaExpressao('0')}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buEquals"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/teal_700"
+                    android:text="@string/igual"
+                    android:onClick="@{() -> viewmodel.calculaExpressao()}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/calcButtonTextSize" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
