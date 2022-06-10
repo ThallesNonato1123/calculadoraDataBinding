@@ -4,5 +4,5 @@ interface ICalculatorService {
     fun calculaExpressao(value: String):String
     fun undoExpressao(value: String):String
     fun limparCalculadora(value: String):String
-    fun computaExpressa(value: String, valor:Char):String
+    fun computaExpressao(value: String, valor:Char):String
 }

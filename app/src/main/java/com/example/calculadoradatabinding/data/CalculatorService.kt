@@ -19,7 +19,7 @@ class CalculatorService: ICalculatorService {
         return " "
     }
 
-    override fun computaExpressa(value: String, valor: Char): String {
+    override fun computaExpressao(value: String, valor: Char): String {
         return value.plus(valor)
     }
 }

@@ -12,7 +12,7 @@ class CalculatorViewModel:  ViewModel() {
     val value: LiveData<String> = _value
 
     fun computaExpressao(valor: Char){
-        _value.value = _value.value?.let { calculator.computaExpressa(it,valor) }
+        _value.value = _value.value?.let { calculator.computaExpressao(it,valor) }
     }
 
     fun calculaExpressao() {
