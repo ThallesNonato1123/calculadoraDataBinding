@@ -1,18 +1,19 @@
 package com.example.calculadoradatabinding.data
-import android.widget.TextView
 import net.objecthunter.exp4j.ExpressionBuilder
-import kotlin.math.pow
-import kotlin.math.round
 
 class CalculatorService: ICalculatorService {
     override fun calculaExpressao(value: String): String {
         val eval = ExpressionBuilder(value).build()
-        val res = eval.evaluate()
-        return "%,.2f".format(res)
+        try {eval.evaluate()} catch (erro : ArithmeticException){
+            return "Inválido"
+        }
+        return "%,.2f".format(eval.evaluate())
     }
 
     override fun undoExpressao(value: String): String {
-        return value.dropLast(1)
+        return if(value.last().isLetter()){
+            value.dropLast(value.length)
+        }else value.dropLast(1)
     }
 
     override fun limparCalculadora(value: String): String {
@@ -20,6 +21,9 @@ class CalculatorService: ICalculatorService {
     }
 
     override fun computaExpressao(value: String, valor: Char): String {
+        if(value == "Inválido"){
+           return valor.toString()
+        }
         return value.plus(valor)
     }
 }
