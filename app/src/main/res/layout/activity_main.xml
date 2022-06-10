@@ -108,6 +108,17 @@
                     android:textColor="@color/orange"
                     android:textSize="@dimen/calcButtonTextSize" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buUndo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:text="@string/undo"
+                    android:onClick="@{() -> viewmodel.undoExpressao()}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/calcButtonTextSize" />
+
             </LinearLayout>
 
             <LinearLayout

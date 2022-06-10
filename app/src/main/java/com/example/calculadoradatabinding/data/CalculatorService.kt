@@ -11,7 +11,15 @@ class CalculatorService: ICalculatorService {
         return "%,.2f".format(res)
     }
 
+    override fun undoExpressao(value: String): String {
+        return value.dropLast(1)
+    }
+
     override fun limparCalculadora(value: String): String {
         return " "
+    }
+
+    override fun computaExpressa(value: String, valor: Char): String {
+        return value.plus(valor)
     }
 }
