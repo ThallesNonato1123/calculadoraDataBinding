@@ -1,26 +1,26 @@
 package com.example.calculadoradatabinding.data
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CalculatorViewModel:  ViewModel() {
-    private val calculator: ICalculatorService = CalculatorService()
-    private val _value = MutableLiveData("")
-    val value: LiveData<String> = _value
+class CalculatorViewModel(internal val calculator: ICalculatorService):  ViewModel(), ICalculatorViewModel {
+    var liveData = MutableLiveData("")
+        private set
 
-    fun computaExpressao(valor: Char){
-        _value.value = _value.value?.let { calculator.computaExpressao(it,valor) }
+    override fun computaExpressao(valor: Char){
+        liveData.value = liveData.value?.let {
+            calculator.computaExpressao("",valor)
+        }
     }
 
-    fun calculaExpressao() {
-        _value.value = _value.value?.let { calculator.calculaExpressao(it) }
+    override fun calculaExpressao() {
+        liveData.value = liveData.value?.let { calculator.calculaExpressao(it) }
     }
 
-    fun undoExpressao(){
-        _value.value = _value.value?.let { calculator.undoExpressao(it)}
+    override fun undoExpressao(){
+        liveData.value = liveData.value?.let { calculator.undoExpressao(it)}
     }
 
-    fun limpaCalculadora() {
-        _value.value = _value.value?.let { calculator.limparCalculadora(it)}
+    override fun limpaCalculadora() {
+        liveData.value = liveData.value?.let { calculator.limparCalculadora(it)}
     }
 }

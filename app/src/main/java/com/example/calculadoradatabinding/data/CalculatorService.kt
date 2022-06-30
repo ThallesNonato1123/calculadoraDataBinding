@@ -3,11 +3,11 @@ import net.objecthunter.exp4j.ExpressionBuilder
 
 class CalculatorService: ICalculatorService {
     override fun calculaExpressao(value: String): String {
-        val eval = ExpressionBuilder(value).build()
-        try {eval.evaluate()} catch (erro : ArithmeticException){
+        val expressao = ExpressionBuilder(value).build()
+        try {expressao.evaluate()} catch (erro : ArithmeticException){
             return "Inválido"
         }
-        return "%,.2f".format(eval.evaluate())
+        return "%,.2f".format(expressao.evaluate())
     }
 
     override fun undoExpressao(value: String): String {
